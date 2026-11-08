@@ -2,7 +2,7 @@
 
 > **Server-Driven UI SDK, Liquid Rounded Vector QR Generator, and Fluid Date/Time Picker for SaviorBill & Modern Web Frontends.**
 
-[![License: PolyForm Shield 1.0.0](https://img.shields.io/badge/License-PolyForm%20Shield%201.0.0-blue.svg)](https://polyformproject.org/licenses/shield/1.0.0/)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7+-blue.svg)](https://www.typescriptlang.org/)
 
 ---
@@ -138,4 +138,4 @@ export const OrderView = () => <SchemaRenderer node={manifest} />;
 ## Author & License
 
 - **Author:** [UNVISLATE](https://github.com/UNVISLATE)
-- **License:** PolyForm Shield License 1.0.0
+- **License:** Apache License 2.0 (see [LICENSE](LICENSE))
