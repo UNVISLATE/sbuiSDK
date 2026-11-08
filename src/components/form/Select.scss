@@ -1,0 +1,102 @@
+// ============================================================================
+// Custom Select / Dropdown Component Styles (SCSS)
+// ============================================================================
+
+@use "../../styles/variables" as *;
+@use "../../styles/animations" as *;
+
+.sbui-select-wrapper {
+  position: relative;
+  width: 100%;
+  font-family: var(--sbui-font-family);
+  user-select: none;
+}
+
+.sbui-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--sbui-card-bg, #141417);
+  border: 1px solid var(--sbui-border, #27272a);
+  border-radius: var(--sbui-radius-md, 14px);
+  color: var(--sbui-fg, #f4f4f5);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all $duration-fast ease;
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: var(--sbui-border-focus, #009080);
+    background: var(--sbui-surface-hover, #272730);
+  }
+
+  &.is-open {
+    border-color: var(--sbui-primary, #009080);
+    box-shadow: 0 0 0 3px rgba(0, 144, 128, 0.2);
+  }
+
+  .sbui-select-value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+
+  .sbui-select-chevron {
+    color: var(--sbui-fg-muted, #a1a1aa);
+    transition: transform $duration-fast ease;
+    display: flex;
+    align-items: center;
+
+    &.is-open {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.sbui-select-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 120;
+  background: var(--sbui-surface-elevated, #1e1e24);
+  border: 1px solid var(--sbui-border, #27272a);
+  border-radius: var(--sbui-radius-md, 14px);
+  box-shadow: var(--sbui-shadow-xl);
+  padding: 6px;
+  max-height: 240px;
+  overflow-y: auto;
+  animation: sbui-slide-down $duration-normal $ease-spring forwards;
+  backdrop-filter: blur(12px);
+}
+
+.sbui-select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: var(--sbui-radius-sm, 8px);
+  font-size: 13px;
+  color: var(--sbui-fg, #f4f4f5);
+  cursor: pointer;
+  transition: all $duration-fast ease;
+
+  &:hover {
+    background: var(--sbui-surface-hover, #272730);
+    color: #ffffff;
+  }
+
+  &.is-selected {
+    background: rgba(0, 144, 128, 0.15);
+    color: var(--sbui-primary-light, #00c7b0);
+    font-weight: 600;
+  }
+
+  .sbui-option-check {
+    color: var(--sbui-primary, #009080);
+    font-weight: bold;
+  }
+}
