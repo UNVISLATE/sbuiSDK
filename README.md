@@ -1,141 +1,89 @@
-# @unvislate/sbui-sdk
-
-> **Server-Driven UI SDK, Liquid Rounded Vector QR Generator, and Fluid Date/Time Picker for SaviorBill & Modern Web Frontends.**
+# sbuiSDK (`@unvislate/sbui-sdk`)
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7+-blue.svg)](https://www.typescriptlang.org/)
 
+UI component library and Server-Driven UI (SDUI) engine built for [**SaviorBill**](https://github.com/UNVISLATE/SaviorBill) — a modern self-hosted billing, store and subscription platform.
+
+`sbuiSDK` provides standalone UI components and a declarative schema renderer for dialog-based storefronts, checkout flows, and dynamic service forms without requiring frontend rebuilds.
+
 ---
 
-## Features
+## What's Included
 
-- **Liquid Rounded Vector QR Code Generator (`QRCode`):**
-  - Smooth connected data dots (`squircle modules`) with rounded corners instead of harsh square pixels.
-  - Styled rounded finder patterns (outer squircle frame + inner squircle eye).
-  - Safe central cutout area with backdrop disc for vector logos (`UNVIDark.svg`, `UNVILight.svg`, or custom SVG/PNG).
-  - Pure vector SVG output (scalable to any resolution) and Canvas/PNG export.
-  - Zero external dependencies for QR matrix generation.
-
-- **Fluid Animated Date & Time Picker (`DateTimePicker`):**
-  - Pure SCSS styling with hardware-accelerated micro-animations (`cubic-bezier` spring curves).
-  - Quick presets: "Сегодня", "Завтра", "+7 дней", "+30 дней".
-  - Interactive hour & minute stepper (5-minute step).
-  - Standard ISO 8601 string output.
-
-- **Server-Driven UI Engine (`SchemaRenderer`):**
-  - Declarative layout AST nodes: `row`, `column`, `card`, `grid`, `space`, `divider`.
-  - Typography & status nodes: `text` (h1-h4, body, caption, code), `badge`.
-  - Conditional visibility (`depends_on: { field: "...", equals: true }`).
-  - Seamless form integration with zero client-side rebuilds.
-
-- **Design System & Theming:**
-  - Full CSS Variables & SCSS tokens (`--sbui-*`) for effortless theme overrides.
-  - Native dark (Stealth) and light theme support.
+- **Liquid Connected QR (`QRCode`):**
+  Smooth rounded capsule modules with 1:1:3:1:1 squircle finder patterns, safe central logo disc, and Level H error correction (100% camera scannable).
+- **Interactive Form Controls:**
+  Hardware-accelerated `DateTimePicker` with quick presets, and reactive custom `Select` popover dropdowns.
+- **Server-Driven UI (`SchemaRenderer`):**
+  Renders declarative JSON/Lua UI layouts (`card`, `row`, `column`, `grid`, `badge`, `text`) driven directly by backend manifests.
+- **Dark Stealth Theme:**
+  Designed with SaviorBill's deep dark stealth palette (`#09090b` / `#141417`) and signature teal accents (`#009080`), customizable via CSS variables.
 
 ---
 
 ## Installation
 
 ```bash
-# npm
 npm install @unvislate/sbui-sdk
-
-# pnpm
-pnpm add @unvislate/sbui-sdk
-
-# yarn
-yarn add @unvislate/sbui-sdk
 ```
 
-Or reference locally in offline monorepos:
+Or link locally in offline monorepos:
 ```json
 {
   "dependencies": {
-    "@unvislate/sbui-sdk": "file:../sbuiSDK"
+    "@unvislate/sbui-sdk": "file:../vendor/sbuiSDK"
   }
 }
 ```
 
 ---
 
-## Quick Start
+## Quick Example
 
-### 1. Liquid Rounded QR Code
+### Liquid QR Code
 
 ```tsx
 import React from "react";
 import { QRCode } from "@unvislate/sbui-sdk";
 import "@unvislate/sbui-sdk/styles.css";
 
-export const PaymentCard = () => {
-  return (
-    <div className="card">
-      <QRCode
-        value="https://saviorbill.dev"
-        size={240}
-        plateRadius={28}
-        logo="UNVIDark"
-      />
-    </div>
-  );
-};
+export const SubscriptionCard = () => (
+  <QRCode
+    value="https://sub.saviorvpn.net/api/v1/sub/sbu_7f9a2d81c0e3b4?token=sec_live_9a8f"
+    size={240}
+    plateRadius={28}
+    logo="UNVIDark"
+  />
+);
 ```
 
-### 2. DateTime Picker
-
-```tsx
-import React, { useState } from "react";
-import { DateTimePicker } from "@unvislate/sbui-sdk";
-
-export const ScheduleForm = () => {
-  const [date, setDate] = useState<string>("");
-
-  return (
-    <DateTimePicker
-      value={date}
-      onChange={setDate}
-      mode="datetime"
-      label="Дата активации услуги"
-    />
-  );
-};
-```
-
-### 3. Server-Driven UI (JSON Manifest)
+### Server-Driven UI Manifest
 
 ```tsx
 import React from "react";
 import { SchemaRenderer, SchemaNode } from "@unvislate/sbui-sdk";
 
-const manifest: SchemaNode = {
+const orderManifest: SchemaNode = {
   type: "card",
-  header: "Детали заказа",
+  header: "Подписка Xray Core",
   children: [
-    {
-      type: "row",
-      gap: 16,
-      align: "center",
-      children: [
-        { type: "qr", value: "https://saviorbill.dev", size: 160 },
-        {
-          type: "column",
-          gap: 6,
-          children: [
-            { type: "text", variant: "h3", content: "WireGuard VPN" },
-            { type: "badge", variant: "success", content: "Активен" }
-          ]
-        }
-      ]
-    }
+    { type: "text", variant: "body", content: "Subscription URL для импорта в Hiddify и Sing-box" },
+    { type: "badge", variant: "success", content: "Активна" }
   ]
 };
 
-export const OrderView = () => <SchemaRenderer node={manifest} />;
+export const OrderView = () => <SchemaRenderer node={orderManifest} />;
 ```
 
 ---
 
-## Author & License
+## Used in SaviorBill
 
-- **Author:** [UNVISLATE](https://github.com/UNVISLATE)
-- **License:** Apache License 2.0 (see [LICENSE](LICENSE))
+This SDK is developed and maintained as part of the [SaviorBill](https://github.com/UNVISLATE/SaviorBill) ecosystem. It is included as a git submodule (`vendor/sbuiSDK`) to guarantee 100% offline, self-contained builds of the admin UI and storefront.
+
+---
+
+## License
+
+[Apache License 2.0](LICENSE) © 2026 [UNVISLATE](https://github.com/UNVISLATE)
