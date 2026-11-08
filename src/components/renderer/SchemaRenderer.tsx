@@ -382,10 +382,10 @@ export const ManifestLivePreview: React.FC<{
     return manifest as Record<string, any>;
   }, [manifest]);
 
-  if (!parsed) {
+  if (!parsed || (typeof parsed === "object" && Object.keys(parsed).length === 0)) {
     return (
       <div style={{ padding: "24px", textAlign: "center", color: "var(--sbui-fg-muted, #a1a1aa)", fontSize: "13px" }}>
-        Манифест пуст или содержит некорректный JSON
+        Поля формы не настроены
       </div>
     );
   }
@@ -421,14 +421,7 @@ export const ManifestLivePreview: React.FC<{
 
   if (Array.isArray(fields) && fields.length > 0) {
     return (
-      <div className={`sbui-live-preview ${className}`} style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "16px" }}>
-        {parsed.name && (
-          <div style={{ borderBottom: "1px solid var(--sbui-border, #27272a)", paddingBottom: "12px" }}>
-            <div style={{ fontSize: "15px", fontWeight: 600, color: "var(--sbui-fg, #f4f4f5)" }}>{parsed.name}</div>
-            {parsed.description && <div style={{ fontSize: "12px", color: "var(--sbui-fg-muted, #a1a1aa)", marginTop: "4px" }}>{parsed.description}</div>}
-          </div>
-        )}
-
+      <div className={`sbui-live-preview ${className}`} style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "16px" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
           {fields.map((f: any, idx: number) => {
             const fieldNode: any = {
@@ -477,7 +470,7 @@ export const ManifestLivePreview: React.FC<{
 
   return (
     <div style={{ padding: "24px", textAlign: "center", color: "var(--sbui-fg-muted, #a1a1aa)", fontSize: "13px" }}>
-      В манифесте нет полей для отображения ({previewType})
+      Поля формы не настроены
     </div>
   );
 };
