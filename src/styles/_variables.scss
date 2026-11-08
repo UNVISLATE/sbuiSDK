@@ -3,11 +3,11 @@
 // ============================================================================
 
 :root {
-  // Brand & Accents
-  --sbui-primary: #3b82f6;
-  --sbui-primary-hover: #2563eb;
+  // Brand & Accents (SaviorBill / UNVI Signature Teal)
+  --sbui-primary: #009080;
+  --sbui-primary-hover: #007a6d;
   --sbui-primary-fg: #ffffff;
-  --sbui-accent: #6366f1;
+  --sbui-accent: #0c5e53;
 
   // Backgrounds & Surfaces
   --sbui-bg: #09090b;
@@ -17,7 +17,7 @@
 
   // Borders & Dividers
   --sbui-border: #27272a;
-  --sbui-border-focus: #3b82f6;
+  --sbui-border-focus: #009080;
 
   // Typography
   --sbui-fg: #f4f4f5;
@@ -43,10 +43,10 @@
   // DatePicker Tokens
   --sbui-dp-bg: #141417;
   --sbui-dp-border: #27272a;
-  --sbui-dp-selected-bg: #3b82f6;
+  --sbui-dp-selected-bg: #009080;
   --sbui-dp-selected-fg: #ffffff;
   --sbui-dp-hover-bg: #272730;
-  --sbui-dp-today-border: #3b82f6;
+  --sbui-dp-today-border: #009080;
 
   // Shadows
   --sbui-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);

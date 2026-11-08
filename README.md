@@ -137,5 +137,5 @@ export const OrderView = () => <SchemaRenderer node={manifest} />;
 
 ## Author & License
 
-- **Author:** [unvislate](https://github.com/unvislate)
+- **Author:** [UNVISLATE](https://github.com/UNVISLATE)
 - **License:** PolyForm Shield License 1.0.0
