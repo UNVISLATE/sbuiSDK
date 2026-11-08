@@ -1,7 +1,7 @@
 {
   "name": "@unvislate/sbui-sdk",
   "version": "0.1.0",
-  "description": "Server-Driven UI SDK, Telegram-style QR generator, rich Date/Time picker and declarative layout engine for SaviorBill and modern storefronts.",
+  "description": "Server-Driven UI SDK, Liquid Rounded Vector QR generator, rich Date/Time picker and declarative layout engine for SaviorBill and modern storefronts.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -39,7 +39,8 @@
     "saviorbill",
     "sbui",
     "qr-code",
-    "telegram-qr",
+    "liquid-qr",
+    "vector-qr",
     "datepicker",
     "server-driven-ui",
     "unvislate",
