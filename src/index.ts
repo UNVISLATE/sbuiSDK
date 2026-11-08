@@ -13,4 +13,4 @@ export * from "./components/form";
 export * from "./components/renderer/SchemaRenderer";
 
 // Global stylesheet import
-import "./styles/index.scss";
+import "./styles/index.css";

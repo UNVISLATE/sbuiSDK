@@ -4,8 +4,8 @@
 // ============================================================================
 
 import React, { useMemo } from "react";
-import { generateQrMatrix, isFinderPattern, isCenterCutout, ErrorCorrectionLevel } from "./qrMatrix";
-import "./QRCode.scss";
+import { generateQrMatrix, isFinderPattern, isCenterCutout, type ErrorCorrectionLevel } from "./qrMatrix";
+import "./QRCode.css";
 
 export interface QRCodeProps {
   value: string;

@@ -3,7 +3,7 @@
 // ============================================================================
 
 import React, { useEffect } from "react";
-import "./Dialog.scss";
+import "./Dialog.css";
 
 export interface DialogProps {
   open: boolean;

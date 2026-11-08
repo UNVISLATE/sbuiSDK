@@ -1,9 +1,7 @@
-// ============================================================================
-// DateTimePicker Component Styles (SCSS)
-// ============================================================================
+/* ============================================================================ */
+/* DateTimePicker Component Styles (SCSS) */
+/* ============================================================================ */
 
-@use "../../styles/variables" as *;
-@use "../../styles/animations" as *;
 
 .sbui-datepicker-wrapper {
   position: relative;
@@ -174,7 +172,7 @@
   }
 }
 
-// Time selector section
+/* Time selector section */
 .sbui-datepicker-time-section {
   margin-top: 14px;
   padding-top: 14px;
@@ -219,7 +217,7 @@
   }
 }
 
-// Presets toolbar
+/* Presets toolbar */
 .sbui-datepicker-presets {
   display: flex;
   flex-wrap: wrap;

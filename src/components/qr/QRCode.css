@@ -1,9 +1,7 @@
-// ============================================================================
-// QRCode: Liquid Rounded Vector QR Code Component Styles (SCSS)
-// ============================================================================
+/* ============================================================================ */
+/* QRCode: Liquid Rounded Vector QR Code Component Styles (SCSS) */
+/* ============================================================================ */
 
-@use "../../styles/variables" as *;
-@use "../../styles/animations" as *;
 
 .sbui-qr-container {
   display: inline-flex;
@@ -62,7 +60,7 @@
   }
 }
 
-// Brand accent variant (UNVI Signature Teal)
+/* Brand accent variant (UNVI Signature Teal) */
 .sbui-qr-theme-brand {
   --sbui-qr-bg: #ffffff;
   --sbui-qr-fg: var(--sbui-primary, #009080);
@@ -70,7 +68,7 @@
   --sbui-qr-badge-fg: #ffffff;
 }
 
-// Dark variant (pure stealth black)
+/* Dark variant (pure stealth black) */
 .sbui-qr-theme-dark {
   --sbui-qr-bg: #18181b;
   --sbui-qr-fg: #ffffff;
@@ -78,7 +76,7 @@
   --sbui-qr-badge-fg: #000000;
 }
 
-// Light variant
+/* Light variant */
 .sbui-qr-theme-light {
   --sbui-qr-bg: #ffffff;
   --sbui-qr-fg: #09090b;

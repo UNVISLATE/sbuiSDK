@@ -3,9 +3,9 @@
 // ============================================================================
 
 import React, { useState, useRef, useEffect } from "react";
-import "./Select.scss";
+import "./Select.css";
 
-export interface SelectOption {
+export interface FormSelectOption {
   value: string;
   label: string;
   icon?: string;
@@ -13,7 +13,7 @@ export interface SelectOption {
 }
 
 export interface SelectProps {
-  options: SelectOption[];
+  options: FormSelectOption[];
   value?: string;
   onChange?: (value: string) => void;
   label?: string;

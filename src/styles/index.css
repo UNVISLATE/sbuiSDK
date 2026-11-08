@@ -1,17 +1,17 @@
-// ============================================================================
-// @unvislate/sbui-sdk Master Stylesheet (SCSS)
-// ============================================================================
+/* ============================================================================ */
+/* @unvislate/sbui-sdk Master Stylesheet                                       */
+/* ============================================================================ */
 
-@use "./variables" as *;
-@use "./animations" as *;
-@use "../components/qr/QRCode.scss";
-@use "../components/datepicker/DateTimePicker.scss";
-@use "../components/layout/Layout.scss";
-@use "../components/typography/Typography.scss";
-@use "../components/dialog/Dialog.scss";
-@use "../components/form/Select.scss";
+@import "./variables.css";
+@import "./animations.css";
+@import "../components/qr/QRCode.css";
+@import "../components/datepicker/DateTimePicker.css";
+@import "../components/layout/Layout.css";
+@import "../components/typography/Typography.css";
+@import "../components/dialog/Dialog.css";
+@import "../components/form/Select.css";
 
-// Base button styles
+/* Base button styles */
 .sbui-btn {
   display: inline-flex;
   align-items: center;
@@ -23,7 +23,7 @@
   border-radius: var(--sbui-radius-md);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all $duration-fast ease;
+  transition: all var(--sbui-duration-fast, 150ms) ease;
   user-select: none;
 
   &.variant-primary {

@@ -3,7 +3,7 @@
 // ============================================================================
 
 import React from "react";
-import "./Typography.scss";
+import "./Typography.css";
 
 export interface TextProps {
   children?: React.ReactNode;

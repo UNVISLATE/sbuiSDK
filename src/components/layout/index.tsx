@@ -3,7 +3,7 @@
 // ============================================================================
 
 import React from "react";
-import "./Layout.scss";
+import "./Layout.css";
 
 export interface RowProps {
   children?: React.ReactNode;

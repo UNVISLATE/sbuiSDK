@@ -3,7 +3,7 @@
 // ============================================================================
 
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import "./DateTimePicker.scss";
+import "./DateTimePicker.css";
 
 export interface DateTimePickerProps {
   value?: string | Date;

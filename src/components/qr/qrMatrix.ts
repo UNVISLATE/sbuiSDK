@@ -44,7 +44,7 @@ function gfMul(x: number, y: number): number {
   return GF256_EXP[GF256_LOG[x] + GF256_LOG[y]];
 }
 
-function polyMul(p1: Uint8Array, p2: Uint8Array): Uint8Array {
+function polyMul(p1: Uint8Array<any>, p2: Uint8Array<any>): Uint8Array<any> {
   const res = new Uint8Array(p1.length + p2.length - 1);
   for (let i = 0; i < p1.length; i++) {
     for (let j = 0; j < p2.length; j++) {
@@ -54,7 +54,7 @@ function polyMul(p1: Uint8Array, p2: Uint8Array): Uint8Array {
   return res;
 }
 
-function rsGeneratorPoly(degree: number): Uint8Array {
+function rsGeneratorPoly(degree: number): Uint8Array<any> {
   let poly = new Uint8Array([1]);
   for (let i = 0; i < degree; i++) {
     poly = polyMul(poly, new Uint8Array([1, GF256_EXP[i]]));
@@ -62,7 +62,7 @@ function rsGeneratorPoly(degree: number): Uint8Array {
   return poly;
 }
 
-function rsCalculateEc(data: Uint8Array, ecCount: number): Uint8Array {
+function rsCalculateEc(data: Uint8Array<any>, ecCount: number): Uint8Array<any> {
   const gen = rsGeneratorPoly(ecCount);
   const msg = new Uint8Array(data.length + ecCount);
   msg.set(data);

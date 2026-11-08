@@ -101,6 +101,26 @@ export interface BadgeNode extends BaseNode {
   size?: "sm" | "md";
 }
 
+export interface AlertNode extends BaseNode {
+  type: "alert";
+  content?: string;
+  title?: string;
+  variant?: "info" | "warning" | "error" | "success";
+}
+
+export interface NumberNode extends BaseNode {
+  type: "number";
+  name: string;
+  label?: string;
+  min?: number;
+  max?: number;
+  step?: number;
+  defaultValue?: number;
+  placeholder?: string;
+  help?: string;
+  required?: boolean;
+}
+
 // QR Widget Node
 export interface QRNode extends BaseNode {
   type: "qr";
@@ -109,7 +129,7 @@ export interface QRNode extends BaseNode {
   logo?: "UNVI" | "UNVIDark" | "UNVILight" | string;
   logoSize?: number;
   plateRadius?: number;
-  style?: "liquid" | "rounded" | "classic";
+  qrStyle?: "liquid" | "rounded" | "classic";
   errorCorrection?: "L" | "M" | "Q" | "H";
   color?: string;
   backgroundColor?: string;
@@ -199,9 +219,11 @@ export type SchemaNode =
   | SpaceNode
   | TextNode
   | BadgeNode
+  | AlertNode
   | QRNode
   | DatePickerNode
   | InputNode
+  | NumberNode
   | ToggleNode
   | SelectNode
   | ButtonNode

@@ -3,7 +3,7 @@
 // ============================================================================
 
 import React from "react";
-import { SchemaNode } from "../../types/schema";
+import type { SchemaNode } from "../../types/schema";
 import { QRCode } from "../qr";
 import { DateTimePicker } from "../datepicker/DateTimePicker";
 import { Row, Column, Card } from "../layout";
