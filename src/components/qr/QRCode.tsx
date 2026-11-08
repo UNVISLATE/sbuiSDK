@@ -1,30 +1,30 @@
 // ============================================================================
-// TelegramQR: Telegram-Style Liquid Rounded QR Code Component (sbuiSDK)
+// QRCode: Liquid Rounded Vector QR Code Component (sbuiSDK)
 // ============================================================================
 
 import React, { useMemo } from "react";
 import { generateQrMatrix, isFinderPattern, isCenterCutout, ErrorCorrectionLevel } from "./qrMatrix";
-import "./TelegramQR.scss";
+import "./QRCode.scss";
 
-export interface TelegramQRProps {
+export interface QRCodeProps {
   value: string;
   size?: number;
   plateRadius?: number;
   logo?: "UNVI" | "UNVIDark" | "UNVILight" | string;
   logoSize?: number;
   errorCorrection?: ErrorCorrectionLevel;
-  theme?: "default" | "dark" | "telegram";
+  theme?: "default" | "dark" | "light" | "brand";
   className?: string;
   style?: React.CSSProperties;
   color?: string;
   backgroundColor?: string;
 }
 
-// Built-in UNVI vector logos
+// Built-in UNVI vector mark
 const UNVI_SVG_PATH =
   "M310 433H111L111 652C111 659 111 689 157.001 719L504 948L504 846C504 840 497 827 492 824L221 652C221 652 200 640 200 610V510C200 510 200 500 210.5 500C221 500 221 510 221 510V600C221 630 242 642 242 642L513 814L784 642C784 642 805 630 805 600V220C805 220 805 210 815.5 210C826 210 826 220 826 220V610C826 640 805 652 805 652L534 824C529 827 522 840 522.001 846L522 948L869.001 719C915 689 915 659 915 652V44L746 145C716 163 716 163 716 219.75V549L513.001 696L310 549V433ZM310.001 342C310.001 312 279 300 244 288C209 276 203 259.5 203 228V102L111 44V411H310.001V342Z";
 
-export const TelegramQR: React.FC<TelegramQRProps> = ({
+export const QRCode: React.FC<QRCodeProps> = ({
   value,
   size = 260,
   plateRadius = 28,
@@ -46,11 +46,9 @@ export const TelegramQR: React.FC<TelegramQRProps> = ({
   const cellSize = qrInnerSize / moduleCount;
 
   // Center cutout geometry
-  const centerCoord = size / 2;
   const badgeDiameter = logoSize || Math.max(44, size * 0.26);
-  const badgeRadius = badgeDiameter / 2;
 
-  // Render corner finders as Telegram-style rounded frames and eyes
+  // Render corner finders as smooth squircle frames and rounded eyes
   const renderFinder = (x: number, y: number, key: string) => {
     const finderSize = 7 * cellSize;
     const outerRadius = cellSize * 1.8;
@@ -86,7 +84,7 @@ export const TelegramQR: React.FC<TelegramQRProps> = ({
     );
   };
 
-  // Render data dots (rounded squircle capsules/circles)
+  // Render data dots (rounded squircle capsules/dots)
   const dataDots: React.ReactNode[] = [];
   for (let r = 0; r < moduleCount; r++) {
     for (let c = 0; c < moduleCount; c++) {
@@ -114,15 +112,17 @@ export const TelegramQR: React.FC<TelegramQRProps> = ({
   const themeClass =
     theme === "dark"
       ? "sbui-qr-theme-dark"
-      : theme === "telegram"
-      ? "sbui-qr-theme-telegram"
+      : theme === "brand"
+      ? "sbui-qr-theme-brand"
+      : theme === "light"
+      ? "sbui-qr-theme-light"
       : "";
 
   const containerStyle: React.CSSProperties = {
     ...style,
-    ...(color ? { "--sbui-qr-fg": color } as React.CSSProperties : {}),
-    ...(backgroundColor ? { "--sbui-qr-bg": backgroundColor } as React.CSSProperties : {}),
-    ...(plateRadius ? { "--sbui-qr-plate-radius": `${plateRadius}px` } as React.CSSProperties : {}),
+    ...(color ? ({ "--sbui-qr-fg": color } as React.CSSProperties) : {}),
+    ...(backgroundColor ? ({ "--sbui-qr-bg": backgroundColor } as React.CSSProperties) : {}),
+    ...(plateRadius ? ({ "--sbui-qr-plate-radius": `${plateRadius}px` } as React.CSSProperties) : {}),
   };
 
   return (
@@ -164,7 +164,7 @@ export const TelegramQR: React.FC<TelegramQRProps> = ({
             ) : logo.startsWith("<svg") ? (
               <div dangerouslySetInnerHTML={{ __html: logo }} />
             ) : (
-              <img src={logo} alt="QR Logo" />
+              <img src={logo} alt="Logo" />
             )}
           </div>
         )}
@@ -173,4 +173,6 @@ export const TelegramQR: React.FC<TelegramQRProps> = ({
   );
 };
 
-export default TelegramQR;
+// Aliases
+export const LiquidQR = QRCode;
+export default QRCode;

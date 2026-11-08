@@ -1,5 +1,5 @@
 // ============================================================================
-// Telegram-Style QR Generator Styles (SCSS)
+// QRCode: Liquid Rounded Vector QR Code Component Styles (SCSS)
 // ============================================================================
 
 @use "../../styles/variables" as *;
@@ -62,11 +62,11 @@
   }
 }
 
-// Telegram Blue variant
-.sbui-qr-theme-telegram {
+// Brand accent variant
+.sbui-qr-theme-brand {
   --sbui-qr-bg: #ffffff;
-  --sbui-qr-fg: #229ed9;
-  --sbui-qr-badge-bg: #229ed9;
+  --sbui-qr-fg: var(--sbui-primary, #3b82f6);
+  --sbui-qr-badge-bg: var(--sbui-primary, #3b82f6);
   --sbui-qr-badge-fg: #ffffff;
 }
 
@@ -76,4 +76,12 @@
   --sbui-qr-fg: #ffffff;
   --sbui-qr-badge-bg: #ffffff;
   --sbui-qr-badge-fg: #000000;
+}
+
+// Light variant
+.sbui-qr-theme-light {
+  --sbui-qr-bg: #ffffff;
+  --sbui-qr-fg: #09090b;
+  --sbui-qr-badge-bg: #09090b;
+  --sbui-qr-badge-fg: #ffffff;
 }

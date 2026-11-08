@@ -1,6 +1,6 @@
 # @unvislate/sbui-sdk
 
-> **Server-Driven UI SDK, Telegram-Style Liquid Rounded QR Generator, and Fluid Date/Time Picker for SaviorBill & Modern Web Frontends.**
+> **Server-Driven UI SDK, Liquid Rounded Vector QR Generator, and Fluid Date/Time Picker for SaviorBill & Modern Web Frontends.**
 
 [![License: PolyForm Shield 1.0.0](https://img.shields.io/badge/License-PolyForm%20Shield%201.0.0-blue.svg)](https://polyformproject.org/licenses/shield/1.0.0/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7+-blue.svg)](https://www.typescriptlang.org/)
@@ -9,10 +9,10 @@
 
 ## Features
 
-- **Telegram-Style Liquid Rounded QR Code Generator (`TelegramQR`):**
+- **Liquid Rounded Vector QR Code Generator (`QRCode`):**
   - Smooth connected data dots (`squircle modules`) with rounded corners instead of harsh square pixels.
   - Styled rounded finder patterns (outer squircle frame + inner squircle eye).
-  - Safe central cutout area with backdrop disc for vector logos (`UNVIDark.svg`, `UNVILight.svg`, Telegram plane, or custom SVG/PNG).
+  - Safe central cutout area with backdrop disc for vector logos (`UNVIDark.svg`, `UNVILight.svg`, or custom SVG/PNG).
   - Pure vector SVG output (scalable to any resolution) and Canvas/PNG export.
   - Zero external dependencies for QR matrix generation.
 
@@ -60,23 +60,22 @@ Or reference locally in offline monorepos:
 
 ## Quick Start
 
-### 1. Telegram-Style QR Code
+### 1. Liquid Rounded QR Code
 
 ```tsx
 import React from "react";
-import { TelegramQR } from "@unvislate/sbui-sdk";
+import { QRCode } from "@unvislate/sbui-sdk";
 import "@unvislate/sbui-sdk/styles.css";
 
 export const PaymentCard = () => {
   return (
     <div className="card">
-      <TelegramQR
-        value="https://t.me/UNVISLATE"
+      <QRCode
+        value="https://saviorbill.dev"
         size={240}
         plateRadius={28}
         logo="UNVIDark"
       />
-      <span>@UNVISLATE</span>
     </div>
   );
 };
@@ -117,7 +116,7 @@ const manifest: SchemaNode = {
       gap: 16,
       align: "center",
       children: [
-        { type: "qr", value: "https://t.me/UNVISLATE", size: 160 },
+        { type: "qr", value: "https://saviorbill.dev", size: 160 },
         {
           type: "column",
           gap: 6,

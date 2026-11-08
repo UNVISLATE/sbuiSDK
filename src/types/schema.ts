@@ -109,7 +109,7 @@ export interface QRNode extends BaseNode {
   logo?: "UNVI" | "UNVIDark" | "UNVILight" | string;
   logoSize?: number;
   plateRadius?: number;
-  style?: "telegram" | "rounded" | "classic";
+  style?: "liquid" | "rounded" | "classic";
   errorCorrection?: "L" | "M" | "Q" | "H";
   color?: string;
   backgroundColor?: string;

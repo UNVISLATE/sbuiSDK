@@ -4,7 +4,7 @@
 
 import React from "react";
 import { SchemaNode } from "../../types/schema";
-import { TelegramQR } from "../qr/TelegramQR";
+import { QRCode } from "../qr";
 import { DateTimePicker } from "../datepicker/DateTimePicker";
 import { Row, Column, Card } from "../layout";
 import { Text, Badge } from "../typography";
@@ -125,7 +125,7 @@ export const SchemaRenderer: React.FC<SchemaRendererProps> = ({
 
     case "qr":
       return (
-        <TelegramQR
+        <QRCode
           value={node.value}
           size={node.size}
           logo={node.logo}
