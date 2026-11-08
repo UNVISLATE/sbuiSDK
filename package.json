@@ -1,0 +1,65 @@
+{
+  "name": "@unvislate/sbui-sdk",
+  "version": "0.1.0",
+  "description": "Server-Driven UI SDK, Telegram-style QR generator, rich Date/Time picker and declarative layout engine for SaviorBill and modern storefronts.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "assets"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/sbui.css",
+    "./qr": {
+      "types": "./dist/qr.d.ts",
+      "import": "./dist/qr.js"
+    },
+    "./datepicker": {
+      "types": "./dist/datepicker.d.ts",
+      "import": "./dist/datepicker.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UNVISLATE/sbuiSDK.git"
+  },
+  "keywords": [
+    "saviorbill",
+    "sbui",
+    "qr-code",
+    "telegram-qr",
+    "datepicker",
+    "server-driven-ui",
+    "unvislate",
+    "ui-sdk"
+  ],
+  "author": "UNVISLATE",
+  "license": "PolyForm-Shield-1.0.0",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "qrcode-generator": "^1.4.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "sass": "^1.83.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.4.0"
+  }
+}

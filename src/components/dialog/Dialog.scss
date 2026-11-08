@@ -1,0 +1,90 @@
+// ============================================================================
+// Dialog / Modal Component Styles (SCSS)
+// ============================================================================
+
+@use "../../styles/variables" as *;
+@use "../../styles/animations" as *;
+
+.sbui-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: sbui-fade-in $duration-normal ease forwards;
+}
+
+.sbui-dialog-card {
+  background: var(--sbui-card-bg, #141417);
+  border: 1px solid var(--sbui-border, #27272a);
+  border-radius: var(--sbui-radius-xl, 28px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  max-width: 480px;
+  width: 100%;
+  padding: 24px;
+  color: var(--sbui-fg);
+  font-family: var(--sbui-font-family);
+  animation: sbui-scale-in $duration-normal $ease-spring forwards;
+  position: relative;
+  overflow: hidden;
+
+  .sbui-dialog-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--sbui-fg-muted);
+    font-size: 20px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $duration-fast ease;
+
+    &:hover {
+      background: var(--sbui-surface-hover);
+      color: var(--sbui-fg);
+    }
+  }
+
+  .sbui-dialog-header {
+    margin-bottom: 16px;
+
+    .sbui-dialog-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--sbui-fg);
+      margin: 0 0 6px 0;
+    }
+
+    .sbui-dialog-desc {
+      font-size: 14px;
+      color: var(--sbui-fg-muted);
+      margin: 0;
+    }
+  }
+
+  .sbui-dialog-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .sbui-dialog-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--sbui-border);
+  }
+}

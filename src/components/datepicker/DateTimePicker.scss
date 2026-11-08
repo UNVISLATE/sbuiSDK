@@ -1,0 +1,248 @@
+// ============================================================================
+// DateTimePicker Component Styles (SCSS)
+// ============================================================================
+
+@use "../../styles/variables" as *;
+@use "../../styles/animations" as *;
+
+.sbui-datepicker-wrapper {
+  position: relative;
+  display: inline-block;
+  font-family: var(--sbui-font-family);
+  user-select: none;
+  width: 100%;
+}
+
+.sbui-datepicker-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--sbui-card-bg);
+  border: 1px solid var(--sbui-border);
+  border-radius: var(--sbui-radius-md);
+  color: var(--sbui-fg);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all $duration-fast ease;
+
+  &:hover {
+    border-color: var(--sbui-border-focus);
+    background: var(--sbui-surface-hover);
+  }
+
+  &.is-open {
+    border-color: var(--sbui-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+
+  .sbui-datepicker-icon {
+    color: var(--sbui-fg-muted);
+    display: flex;
+    align-items: center;
+  }
+}
+
+.sbui-datepicker-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 100;
+  background: var(--sbui-dp-bg, #141417);
+  border: 1px solid var(--sbui-dp-border, #27272a);
+  border-radius: var(--sbui-radius-lg, 20px);
+  box-shadow: var(--sbui-shadow-xl);
+  padding: 16px;
+  min-width: 310px;
+  backdrop-filter: blur(16px);
+  animation: sbui-slide-down $duration-normal $ease-spring forwards;
+}
+
+.sbui-datepicker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+
+  .sbui-datepicker-month-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--sbui-fg);
+    letter-spacing: -0.01em;
+  }
+
+  .sbui-datepicker-nav-buttons {
+    display: flex;
+    gap: 4px;
+
+    button {
+      background: transparent;
+      border: 1px solid var(--sbui-border);
+      border-radius: var(--sbui-radius-sm);
+      color: var(--sbui-fg-muted);
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all $duration-fast ease;
+
+      &:hover {
+        background: var(--sbui-surface-hover);
+        color: var(--sbui-fg);
+        border-color: var(--sbui-border-focus);
+      }
+    }
+  }
+}
+
+.sbui-datepicker-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 8px;
+
+  span {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--sbui-fg-subtle);
+  }
+}
+
+.sbui-datepicker-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.sbui-datepicker-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--sbui-radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sbui-fg);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all $duration-fast $ease-spring;
+  position: relative;
+
+  &:hover:not(.is-disabled):not(.is-selected) {
+    background: var(--sbui-dp-hover-bg, #272730);
+    transform: scale(1.08);
+  }
+
+  &.is-today {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 3px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--sbui-primary);
+    }
+  }
+
+  &.is-other-month {
+    color: var(--sbui-fg-subtle);
+    opacity: 0.4;
+  }
+
+  &.is-selected {
+    background: var(--sbui-dp-selected-bg, #3b82f6) !important;
+    color: var(--sbui-dp-selected-fg, #ffffff) !important;
+    font-weight: 600;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+  }
+
+  &.is-range-between {
+    background: rgba(59, 130, 246, 0.15);
+    border-radius: 0;
+  }
+
+  &.is-disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+}
+
+// Time selector section
+.sbui-datepicker-time-section {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--sbui-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .sbui-time-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--sbui-fg-muted);
+  }
+
+  .sbui-time-inputs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    input {
+      width: 42px;
+      padding: 4px 6px;
+      text-align: center;
+      background: var(--sbui-surface-elevated);
+      border: 1px solid var(--sbui-border);
+      border-radius: var(--sbui-radius-sm);
+      color: var(--sbui-fg);
+      font-size: 13px;
+      font-family: var(--sbui-font-mono);
+      font-weight: 600;
+
+      &:focus {
+        border-color: var(--sbui-primary);
+        outline: none;
+      }
+    }
+
+    span {
+      color: var(--sbui-fg-muted);
+      font-weight: 600;
+    }
+  }
+}
+
+// Presets toolbar
+.sbui-datepicker-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--sbui-border);
+
+  button {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: var(--sbui-radius-sm);
+    background: var(--sbui-surface-elevated);
+    border: 1px solid var(--sbui-border);
+    color: var(--sbui-fg-muted);
+    cursor: pointer;
+    transition: all $duration-fast ease;
+
+    &:hover {
+      background: var(--sbui-surface-hover);
+      color: var(--sbui-fg);
+      border-color: var(--sbui-border-focus);
+    }
+  }
+}

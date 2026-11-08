@@ -1,0 +1,70 @@
+// ============================================================================
+// SBUI Design System Variables (SCSS Tokens & CSS Variables fallback)
+// ============================================================================
+
+:root {
+  // Brand & Accents
+  --sbui-primary: #3b82f6;
+  --sbui-primary-hover: #2563eb;
+  --sbui-primary-fg: #ffffff;
+  --sbui-accent: #6366f1;
+
+  // Backgrounds & Surfaces
+  --sbui-bg: #09090b;
+  --sbui-card-bg: #141417;
+  --sbui-surface-elevated: #1e1e24;
+  --sbui-surface-hover: #272730;
+
+  // Borders & Dividers
+  --sbui-border: #27272a;
+  --sbui-border-focus: #3b82f6;
+
+  // Typography
+  --sbui-fg: #f4f4f5;
+  --sbui-fg-muted: #a1a1aa;
+  --sbui-fg-subtle: #71717a;
+  --sbui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+  --sbui-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  // Radii
+  --sbui-radius-sm: 8px;
+  --sbui-radius-md: 14px;
+  --sbui-radius-lg: 20px;
+  --sbui-radius-xl: 28px;
+  --sbui-radius-full: 9999px;
+
+  // QR Custom Tokens
+  --sbui-qr-bg: #ffffff;
+  --sbui-qr-fg: #000000;
+  --sbui-qr-plate-radius: 28px;
+  --sbui-qr-badge-bg: #000000;
+  --sbui-qr-badge-fg: #ffffff;
+
+  // DatePicker Tokens
+  --sbui-dp-bg: #141417;
+  --sbui-dp-border: #27272a;
+  --sbui-dp-selected-bg: #3b82f6;
+  --sbui-dp-selected-fg: #ffffff;
+  --sbui-dp-hover-bg: #272730;
+  --sbui-dp-today-border: #3b82f6;
+
+  // Shadows
+  --sbui-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --sbui-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --sbui-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}
+
+// Light theme support
+[data-theme="light"], .sbui-theme-light {
+  --sbui-bg: #f8fafc;
+  --sbui-card-bg: #ffffff;
+  --sbui-surface-elevated: #f1f5f9;
+  --sbui-surface-hover: #e2e8f0;
+  --sbui-border: #e2e8f0;
+  --sbui-fg: #0f172a;
+  --sbui-fg-muted: #64748b;
+  --sbui-fg-subtle: #94a3b8;
+  --sbui-dp-bg: #ffffff;
+  --sbui-dp-border: #e2e8f0;
+  --sbui-dp-hover-bg: #f1f5f9;
+}
