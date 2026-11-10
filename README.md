@@ -1,89 +1,81 @@
-# sbuiSDK (`@unvislate/sbui-sdk`)
+# sbuiSDK
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7+-blue.svg)](https://www.typescriptlang.org/)
 
-UI component library and Server-Driven UI (SDUI) engine built for [**SaviorBill**](https://github.com/UNVISLATE/SaviorBill) — a modern self-hosted billing, store and subscription platform.
-
-`sbuiSDK` provides standalone UI components and a declarative schema renderer for dialog-based storefronts, checkout flows, and dynamic service forms without requiring frontend rebuilds.
+UI component library and Server-Driven UI (SDUI) renderer built for the [**SaviorBill**](https://github.com/UNVISLATE/SaviorBill) ecosystem (`adminui` and [`SBPersonalAccountClient`](https://github.com/UNVISLATE/SBPersonalAccountClient)).
 
 ---
 
-## What's Included
+## Included Modules
 
-- **Liquid Connected QR (`QRCode`):**
-  Smooth rounded capsule modules with 1:1:3:1:1 squircle finder patterns, safe central logo disc, and Level H error correction (100% camera scannable).
-- **Interactive Form Controls:**
-  Hardware-accelerated `DateTimePicker` with quick presets, and reactive custom `Select` popover dropdowns.
-- **Server-Driven UI (`SchemaRenderer`):**
-  Renders declarative JSON/Lua UI layouts (`card`, `row`, `column`, `grid`, `badge`, `text`) driven directly by backend manifests.
-- **Dark Stealth Theme:**
-  Designed with SaviorBill's deep dark stealth palette (`#09090b` / `#141417`) and signature teal accents (`#009080`), customizable via CSS variables.
+- **Liquid Vector QR (`QRCode`):** SVG QR renderer with rounded capsule modules, squircle finder patterns, optional central logo plate, and Level H error correction.
+- **Form Controls (`DateTimePicker`, `Select`):** date/time picker with presets and custom popover select controls.
+- **Server-Driven UI (`SchemaRenderer`, `ManifestLivePreview`):** declarative renderer for JSON/Lua UI manifests (`card`, `row`, `column`, `grid`, `text`, `badge`, `button`, `copy_field`, `qr`, `code`, `markdown`, `divider`, `spacer`) driven directly by backend service manifests.
+- **Layout, Typography & Dialog Primitives:** composable containers (`Box`, `Stack`, `Card`, `Grid`), `Modal`, and `Text` with CSS-variable theming.
 
 ---
 
-## Installation
+## Usage in SaviorBill Workspace
+
+`sbuiSDK` is wired into both SaviorBill repositories (`SaviorBill/vendor/sbuiSDK` and `SBPersonalAccountClient/vendor/sbuiSDK`) as a git submodule so Vite/TypeScript resolve it directly from source without private registries or extra build steps.
+
+When cloning host repositories, fetch submodules recursively:
 
 ```bash
-npm install @unvislate/sbui-sdk
+git clone --recurse-submodules https://github.com/UNVISLATE/SaviorBill.git
 ```
 
-Or link locally in offline monorepos:
-```json
-{
-  "dependencies": {
-    "@unvislate/sbui-sdk": "file:../vendor/sbuiSDK"
-  }
+### Example: Liquid QR Code
+
+```tsx
+import QRCode from "../vendor/sbuiSDK/src/components/qr";
+
+export function SubscriptionQR({ url }: { url: string }) {
+  return (
+    <QRCode
+      value={url}
+      size={220}
+      plateRadius={24}
+      logo="UNVIDark"
+      theme="brand"
+    />
+  );
+}
+```
+
+### Example: Server-Driven UI Manifest
+
+```tsx
+import { SchemaRenderer, type SchemaNode } from "../vendor/sbuiSDK/src";
+
+const manifest: SchemaNode = {
+  type: "card",
+  children: [
+    { type: "badge", variant: "success", content: "VLESS Reality" },
+    { type: "copy_field", label: "Subscription URL", value: "{{public_data.subscription_url}}" },
+  ],
+};
+
+export function ServiceView({ data }: { data: Record<string, unknown> }) {
+  return <SchemaRenderer node={manifest} data={data} />;
 }
 ```
 
 ---
 
-## Quick Example
+## Development
 
-### Liquid QR Code
-
-```tsx
-import React from "react";
-import { QRCode } from "@unvislate/sbui-sdk";
-import "@unvislate/sbui-sdk/styles.css";
-
-export const SubscriptionCard = () => (
-  <QRCode
-    value="https://sub.saviorvpn.net/api/v1/sub/sbu_7f9a2d81c0e3b4?token=sec_live_9a8f"
-    size={240}
-    plateRadius={28}
-    logo="UNVIDark"
-  />
-);
+```bash
+npm ci
+npm run typecheck
+npm run build
 ```
-
-### Server-Driven UI Manifest
-
-```tsx
-import React from "react";
-import { SchemaRenderer, SchemaNode } from "@unvislate/sbui-sdk";
-
-const orderManifest: SchemaNode = {
-  type: "card",
-  header: "Подписка Xray Core",
-  children: [
-    { type: "text", variant: "body", content: "Subscription URL для импорта в Hiddify и Sing-box" },
-    { type: "badge", variant: "success", content: "Активна" }
-  ]
-};
-
-export const OrderView = () => <SchemaRenderer node={orderManifest} />;
-```
-
----
-
-## Used in SaviorBill
-
-This SDK is developed and maintained as part of the [SaviorBill](https://github.com/UNVISLATE/SaviorBill) ecosystem. It is included as a git submodule (`vendor/sbuiSDK`) to guarantee 100% offline, self-contained builds of the admin UI and storefront.
 
 ---
 
 ## License
 
-[Apache License 2.0](LICENSE) © 2026 [UNVISLATE](https://github.com/UNVISLATE)
+Licensed under the **Apache License 2.0** — see [`LICENSE`](LICENSE).
+
+Copyright © 2026 [UNVISLATE](https://github.com/UNVISLATE)
