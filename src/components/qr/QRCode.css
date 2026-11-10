@@ -1,7 +1,6 @@
 /* ============================================================================ */
-/* QRCode: Liquid Rounded Vector QR Code Component Styles (SCSS) */
+/* QRCode: Liquid Vector QR Code Component Styles (sbuiSDK)                     */
 /* ============================================================================ */
-
 
 .sbui-qr-container {
   display: inline-flex;
@@ -10,65 +9,34 @@
   justify-content: center;
   position: relative;
   user-select: none;
-  transition: transform $duration-normal $ease-spring, box-shadow $duration-normal ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    .sbui-qr-plate {
-      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
-    }
-  }
-
-  .sbui-qr-plate {
-    background: var(--sbui-qr-bg, #ffffff);
-    border-radius: var(--sbui-qr-plate-radius, 28px);
-    padding: 20px;
-    box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all $duration-normal $ease-spring;
-    position: relative;
-    overflow: hidden;
-
-    svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .sbui-qr-logo-badge {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: var(--sbui-qr-badge-bg, #000000);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    transition: transform $duration-fast ease;
-
-    svg, img {
-      width: 65%;
-      height: 65%;
-      object-fit: contain;
-    }
-  }
+  transition: box-shadow 0.2s ease;
 }
 
-/* Brand accent variant (UNVI Signature Teal) */
+.sbui-qr-plate {
+  background: var(--sbui-qr-bg, #ffffff);
+  border-radius: var(--sbui-qr-plate-radius, 20px);
+  padding: 14px;
+  box-shadow: 0 10px 25px -6px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sbui-qr-plate svg {
+  display: block;
+}
+
+/* Brand accent variant */
 .sbui-qr-theme-brand {
   --sbui-qr-bg: #ffffff;
-  --sbui-qr-fg: var(--sbui-primary, #009080);
-  --sbui-qr-badge-bg: var(--sbui-primary, #009080);
+  --sbui-qr-fg: var(--color-accent, #009080);
+  --sbui-qr-badge-bg: var(--color-accent, #009080);
   --sbui-qr-badge-fg: #ffffff;
 }
 
-/* Dark variant (pure stealth black) */
+/* Dark variant */
 .sbui-qr-theme-dark {
   --sbui-qr-bg: #18181b;
   --sbui-qr-fg: #ffffff;
